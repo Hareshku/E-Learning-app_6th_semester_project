@@ -4,7 +4,7 @@ import '../../constants.dart';
 import '../../util/route_names.dart';
 
 class IntroScreen extends StatelessWidget {
-  const IntroScreen({Key?key}):super(key: key);
+  const IntroScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +20,14 @@ class IntroScreen extends StatelessWidget {
             "Grow Your skills",
             style: TextStyle(fontSize: 25, color: Colors.grey.shade900),
           ),
-         const SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Text(
-            "Choose your favorite course & start learning",
+            "Choose your favorite course & start learning Java",
             style: TextStyle(fontSize: 17, color: Colors.grey.shade500),
           ),
-         const SizedBox(
+          const SizedBox(
             height: 20,
           ),
           ElevatedButton(
@@ -42,10 +42,10 @@ class IntroScreen extends StatelessWidget {
               ),
             ),
             child: const Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 50,vertical: 10),
-              child:  Text(
+              padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+              child: Text(
                 "Getting Started",
-                style: TextStyle(fontSize: 20,color: Colors.white),
+                style: TextStyle(fontSize: 20, color: Colors.white),
               ),
             ),
           ),
