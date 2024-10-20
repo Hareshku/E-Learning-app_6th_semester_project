@@ -1,5 +1,5 @@
-import 'package:online_course_app_ui/model/course_category.dart';
-import 'package:online_course_app_ui/model/section.dart';
+import 'course_category.dart';
+import 'section.dart';
 
 class Course {
   final String _id;
