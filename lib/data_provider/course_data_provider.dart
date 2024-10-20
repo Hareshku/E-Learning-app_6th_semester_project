@@ -1,7 +1,7 @@
-import 'package:online_course_app_ui/model/course.dart';
-import 'package:online_course_app_ui/model/course_category.dart';
-import 'package:online_course_app_ui/model/lecture.dart';
-import 'package:online_course_app_ui/model/section.dart';
+import '../model/course.dart';
+import '../model/course_category.dart';
+import '../model/lecture.dart';
+import '../model/section.dart';
 
 class CourseDataProvider {
   //Here I have already created courses & section list which we will we using hence forth
