@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../component/bottomNavBar.dart';
+import '../../component/shopping_cart.dart';
 import '../../constants.dart';
 import 'widget/category_course_list.dart';
-import 'widget/category_list.dart';
-import 'widget/course_list.dart';
 import 'widget/featured_courses.dart';
 import 'widget/header.dart';
 import 'widget/offers.dart';
@@ -58,6 +58,12 @@ class CourseHome extends StatelessWidget {
             ],
           ),
         ),
+
+      ),
+      floatingActionButton: ShoppingCart(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomNavBar(
+        selectedIndex: 1,
       ),
     );
   }
