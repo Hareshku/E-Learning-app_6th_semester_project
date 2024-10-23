@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:online_course_app_ui/arguments/course_argument.dart';
+import 'package:online_course_app_ui/util/route_names.dart';
 
 import '../../../constants.dart';
 import '../../../model/course.dart';
@@ -22,6 +24,9 @@ class CourseItem extends StatelessWidget {
           child: InkWell(
             // this will open the course details screen when clicked on any course.
             onTap: (){
+             Navigator.pushNamed(context, RouteNames.CourseDetails,
+             arguments: CourseArgument(course),
+             );
 
             },
             child: Column(
