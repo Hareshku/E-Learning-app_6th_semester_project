@@ -3,6 +3,7 @@ import 'package:online_course_app_ui/arguments/checkout_argument.dart';
 import 'package:online_course_app_ui/screens/courses/my_course_list.dart';
 
 import 'arguments/course_argument.dart';
+import 'screens/Courses/wishlist_screen.dart';
 import 'screens/details/course_details.dart';
 import 'screens/home/course_home.dart';
 import 'screens/intro/intro_screen.dart';
@@ -24,6 +25,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      home: WishlistScreen(),
+      // routes: {
+      //   RouteNames.intro: (context) => const IntroScreen(),
+      //   RouteNames.CourseHome: (context) => const CourseHome(),
+      //   RouteNames.ShoppingCartScreen: (context) => const ShoppingCartScreen(),
+      //   RouteNames.WishList: (context) => const WishlistScreen(),
+      // },
       // home: ShoppingCartScreen(),
       routes: {
         RouteNames.intro: (context) => const IntroScreen(),
