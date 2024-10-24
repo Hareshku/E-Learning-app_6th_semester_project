@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../component/bottomNavBar.dart';
 import '../../component/shopping_cart.dart';
 import '../../constants.dart';
-import 'widget/category_course_list.dart';
-import 'widget/featured_courses.dart';
-import 'widget/header.dart';
-import 'widget/offers.dart';
-import 'widget/search_course.dart';
+import '../widgets/category_course_list.dart';
+import '../widgets/featured_courses.dart';
+import '../widgets/header.dart';
+import '../widgets/offers.dart';
+import '../widgets/search_course.dart';
 
 class CourseHome extends StatelessWidget {
   const CourseHome({Key? key}) : super(key: key);

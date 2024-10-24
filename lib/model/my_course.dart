@@ -1,6 +1,6 @@
 import 'package:online_course_app_ui/model/course.dart';
 
-class MyCourse{
+class MyCourse {
   final Course _course;
   int _progress=0;
 

@@ -43,7 +43,7 @@ class _WishlistState extends State<Wishlist> {
           style: TextStyle(fontSize: 17, color:  Colors.grey.shade800),
         ),
         subtitle: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "By ${course.createdBy}",
