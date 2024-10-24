@@ -25,19 +25,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WishlistScreen(),
-      // routes: {
-      //   RouteNames.intro: (context) => const IntroScreen(),
-      //   RouteNames.CourseHome: (context) => const CourseHome(),
-      //   RouteNames.ShoppingCartScreen: (context) => const ShoppingCartScreen(),
-      //   RouteNames.WishList: (context) => const WishlistScreen(),
-      // },
-      // home: ShoppingCartScreen(),
       routes: {
         RouteNames.intro: (context) => const IntroScreen(),
         RouteNames.CourseHome: (context) => const CourseHome(),
         RouteNames.ShoppingCartScreen: (context) => const ShoppingCartScreen(),
         RouteNames.myCourseList:(context)=>const MyCourseList(),
+        RouteNames.WishlistScreen: (context) => const WishlistScreen(),
       },
       onGenerateRoute: (settings) {
         if (settings.name == RouteNames.CourseDetails) {

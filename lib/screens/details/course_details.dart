@@ -8,7 +8,7 @@ import '../../model/course.dart';
 import '../../model/section.dart';
 import '../../util/route_names.dart';
 import '../../util/util.dart';
-import 'widget/favorite_option.dart';
+import 'favorite_option.dart';
 
 class CourseDetails extends StatelessWidget {
   const CourseDetails({super.key, required this.course});

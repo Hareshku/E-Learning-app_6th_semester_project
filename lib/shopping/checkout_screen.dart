@@ -8,7 +8,7 @@ import 'package:online_course_app_ui/util/util.dart';
 
 import '../data_provider/my_course_data_provider.dart';
 import '../model/course.dart';
-import 'widget/payment_method.dart';
+import 'paymentMethod/payment_method.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen(
@@ -122,25 +122,14 @@ class CheckoutScreen extends StatelessWidget {
                       color: Colors.grey.shade900),
                 ),
                 ElevatedButton(onPressed: (){
-                  // here we will clear items from shopping cart list and
+                  // this will clear items from shopping cart list and
                   //add in users my course list to place the order
-                  //for this video Iam not going to cover transaction
-                  //so lets add data provider for users courses
-                  // first of all lets define model class for users courses
-                  //which will keep course details as well as course progress
                   MyCourseDataProvider.addAllCourse(courseList);
                   // lets clear shopping cart
                   ShoppingCartDataProvider.clearCart();
-                  // this would be different with actual backend integrated app
-                  //here we do not have backend so Iam doing this way
-                  // now lets show order placed message
                   Util.showMessage(context, "Your order is placed successfully");
                   // navigate to home page
                   Navigator.pushNamed(context, RouteNames.CourseHome);
-
-
-
-
                 },
                   style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
                     child: const Text(

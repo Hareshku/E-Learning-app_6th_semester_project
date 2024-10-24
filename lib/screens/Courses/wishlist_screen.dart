@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../component/bottomNavBar.dart';
 import '../../component/shopping_cart.dart';
-import 'widget/wishlist.dart';
+import 'wishlist.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({Key? key}): super(key : key);

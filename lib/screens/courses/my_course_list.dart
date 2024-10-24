@@ -5,23 +5,28 @@ import 'package:online_course_app_ui/model/my_course.dart';
 import 'package:online_course_app_ui/shopping/shopping_cart_screen.dart';
 
 import '../../component/bottomNavBar.dart';
+import '../../component/shopping_cart.dart';
 
 class MyCourseList extends StatelessWidget {
-  const MyCourseList({super.key});
+  const MyCourseList({Key? key}): super(key : key);
 
   @override
   Widget build(BuildContext context) {
-    List<MyCourse> myCourseList = MyCourseDataProvider.myCoursees;
-    if(myCourseList.isNotEmpty){
-      myCourseList[1].progress=50;
-      myCourseList[2].progress=20;
-
+    List<MyCourse> myCourseList = MyCourseDataProvider.myCourses;
+    if (myCourseList.length > 1) {
+      myCourseList[1].progress = 50;
     }
+
+    if (myCourseList.length > 2) {
+      myCourseList[2].progress = 20;
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 10),
@@ -94,7 +99,7 @@ class MyCourseList extends StatelessWidget {
                 ),
               ),
           ),
-        floatingActionButton: ShoppingCartScreen(),
+        floatingActionButton:ShoppingCart(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavBar(selectedIndex: 2,),
       );
