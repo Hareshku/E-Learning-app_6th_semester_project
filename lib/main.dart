@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:online_course_app_ui/arguments/checkout_argument.dart';
 
 import 'arguments/course_argument.dart';
+import 'screens/Courses/wishlist_screen.dart';
 import 'screens/details/course_details.dart';
 import 'screens/home/course_home.dart';
 import 'screens/intro/intro_screen.dart';
@@ -23,12 +24,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: ShoppingCartScreen(),
-      routes: {
-        RouteNames.intro: (context) => const IntroScreen(),
-        RouteNames.CourseHome: (context) => const CourseHome(),
-        RouteNames.ShoppingCartScreen: (context) => const ShoppingCartScreen(),
-      },
+      home: WishlistScreen(),
+      // routes: {
+      //   RouteNames.intro: (context) => const IntroScreen(),
+      //   RouteNames.CourseHome: (context) => const CourseHome(),
+      //   RouteNames.ShoppingCartScreen: (context) => const ShoppingCartScreen(),
+      //   RouteNames.WishList: (context) => const WishlistScreen(),
+      // },
       onGenerateRoute: (settings) {
         if (settings.name == RouteNames.CourseDetails) {
           // course argument created to pass course details to detail screen

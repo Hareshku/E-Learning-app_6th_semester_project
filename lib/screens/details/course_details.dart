@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:online_course_app_ui/constants.dart';
 import 'package:readmore/readmore.dart';
 
+import '../../arguments/checkout_argument.dart';
 import '../../data_provider/shopping_cart_data_provider.dart';
 import '../../model/course.dart';
 import '../../model/section.dart';
+import '../../util/route_names.dart';
 import '../../util/util.dart';
 import 'widget/favorite_option.dart';
 
@@ -301,10 +303,16 @@ class CourseDetails extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            width: 20,
+                            width: 10,
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+
+                            // when Clicked on buy button it will navigate to checkout screen to buy single course
+                            onPressed: () {
+                              Navigator.pushNamed(context, RouteNames.CheckoutScreen,
+                              arguments: CheckoutArgument([course], course.price),
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: kPrimaryColor),
                             child: const Text(
