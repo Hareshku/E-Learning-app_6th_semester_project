@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_course_app_ui/arguments/checkout_argument.dart';
+import 'package:online_course_app_ui/screens/courses/my_course_list.dart';
 
 import 'arguments/course_argument.dart';
 import 'screens/details/course_details.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         RouteNames.intro: (context) => const IntroScreen(),
         RouteNames.CourseHome: (context) => const CourseHome(),
         RouteNames.ShoppingCartScreen: (context) => const ShoppingCartScreen(),
+        RouteNames.myCourseList:(context)=>const MyCourseList(),
       },
       onGenerateRoute: (settings) {
         if (settings.name == RouteNames.CourseDetails) {

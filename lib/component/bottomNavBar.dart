@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_course_app_ui/constants.dart';
+import 'package:online_course_app_ui/util/route_names.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({Key? key, required this.selectedIndex}):super(key: key);
@@ -20,7 +21,7 @@ class BottomNavBar extends StatelessWidget {
             InkWell(
               // on click this will open the respective screen
               onTap: (){
-
+             openScreen(context, 1);
               },
               child: Padding(
                 padding: const EdgeInsets.all(0),
@@ -37,7 +38,7 @@ class BottomNavBar extends StatelessWidget {
             InkWell(
             // on click this will open the respective screen
             onTap: (){
-
+              openScreen(context, 2);
             },
             child: Padding(
             padding: const EdgeInsets.all(0),
@@ -54,7 +55,7 @@ class BottomNavBar extends StatelessWidget {
             InkWell(
               // on click this will open the respective screen
               onTap: (){
-
+                openScreen(context, 3);
               },
               child: Padding(
                 padding: const EdgeInsets.all(0),
@@ -71,7 +72,7 @@ class BottomNavBar extends StatelessWidget {
             InkWell(
               // on click this will open the respective screen
               onTap: (){
-
+                openScreen(context, 4);
               },
               child: Padding(
                 padding: const EdgeInsets.all(0),
@@ -79,7 +80,7 @@ class BottomNavBar extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(Icons.people, color:getSelectedColor(4) ,),
-                    SizedBox(height: 5,),
+                    const SizedBox(height: 5,),
                     Text("Account", style: TextStyle(fontSize: 13, color: getSelectedColor(4)),),
                   ],
                 ),
@@ -92,5 +93,18 @@ class BottomNavBar extends StatelessWidget {
   }
   Color getSelectedColor(int currentIndex){
     return (selectedIndex== currentIndex)?kPrimaryColor:Colors.grey.shade800;
+  }
+  void openScreen(BuildContext context, int selectedOptionNo){
+    String routeName=RouteNames.myCourseList;
+    switch(selectedOptionNo){
+      case 2:
+        routeName=RouteNames.myCourseList;
+        break;
+
+      case 3:
+        routeName=RouteNames.wishList;
+        break;
+    }
+    Navigator.pushReplacementNamed(context, routeName);
   }
 }
