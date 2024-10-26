@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/constants.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../arguments/checkout_argument.dart';
+import '../../constants.dart';
 import '../../data_provider/shopping_cart_data_provider.dart';
 import '../../model/course.dart';
 import '../../model/section.dart';
@@ -13,9 +13,30 @@ import 'favorite_option.dart';
 class CourseDetails extends StatelessWidget {
   const CourseDetails({super.key, required this.course});
   final Course course;
+
   @override
   Widget build(BuildContext context) {
-    var greyTextStyle = TextStyle(fontSize: 15, color: Colors.grey.shade600);
+    // Get screen dimensions
+    final Size screenSize = MediaQuery.of(context).size;
+    final double screenWidth = screenSize.width;
+    final double screenHeight = screenSize.height;
+
+    // Calculate responsive values
+    final double horizontalPadding = screenWidth * 0.05;
+    final double verticalPadding = screenHeight * 0.015;
+    final double iconSize = screenWidth * 0.06;
+    final double largeIconSize = screenWidth * 0.15;
+    final double titleFontSize = screenWidth * 0.05;
+    final double subtitleFontSize = screenWidth * 0.04;
+    final double regularFontSize = screenWidth * 0.035;
+    final double smallFontSize = screenWidth * 0.03;
+    final double bottomBarHeight = screenHeight * 0.08;
+
+    final greyTextStyle = TextStyle(
+      fontSize: regularFontSize,
+      color: Colors.grey.shade600,
+    );
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -23,306 +44,300 @@ class CourseDetails extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 10,
-                        ),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: InkWell(
-                                  onTap: (){
-                                    Navigator.pop(context);
-                                  },
-                                  child: Icon(Icons.arrow_back,
-                                      color: Colors.grey.shade800),
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      Icons.share,
-                                      color: Colors.grey.shade800,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: InkWell(
-                                      onTap: (){
-                                        Util.openShoppingCart(context);
-                                      },
-                                      child: Icon(
-                                        Icons.shopping_cart,
-                                        color: Colors.grey.shade800,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ]),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Top Navigation Bar
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: verticalPadding,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Stack(alignment: Alignment.center, children: [
-                          ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              child: Image.asset(course.thumbnailUrl)),
-                          const Column(
-                            children: [
-                              Icon(
-                                Icons.play_arrow,
-                                size: 90,
-                                color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(screenWidth * 0.02),
+                            child: InkWell(
+                              onTap: () => Navigator.pop(context),
+                              child: Icon(
+                                Icons.arrow_back,
+                                color: Colors.grey.shade800,
+                                size: iconSize,
                               ),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                "Preview this course",
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white),
-                              )
-                            ],
-                          )
-                        ]),
-                        // Padding(
-                        //   padding: const EdgeInsets.all(8.0),
-                        //   child: Row(
-                        //     children: [Icon(Icons.share, color: Colors.grey.shade800),
-                        //
-                        //       Icon(Icons.shopping_cart, color: Colors.grey.shade800),
-                        //
-                        //
-                        //
-                        //     ],
-                        //   ),
-                        // ),
-                        // ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30),
                             ),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20, right: 20, top: 20),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    course.title,
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey.shade800),
+
+                          Text("Course Details", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.all(screenWidth * 0.02),
+                                child: Icon(
+                                  Icons.share,
+                                  color: Colors.grey.shade800,
+                                  size: iconSize,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(screenWidth * 0.02),
+                                child: InkWell(
+                                  onTap: () => Util.openShoppingCart(context),
+                                  child: Icon(
+                                    Icons.shopping_cart,
+                                    color: Colors.grey.shade800,
+                                    size: iconSize,
                                   ),
-                                 const SizedBox(
-                                    height: 10,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Course Thumbnail and Preview
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                      child: AspectRatio(
+                        aspectRatio: 16 / 9,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(screenWidth * 0.03),
+                              ),
+                              child: Image.asset(
+                                course.thumbnailUrl,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                              ),
+                            ),
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  Icons.play_arrow,
+                                  size: largeIconSize,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(height: screenHeight * 0.02),
+                                Text(
+                                  "Preview this course",
+                                  style: TextStyle(
+                                    fontSize: subtitleFontSize,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
                                   ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                         const Icon(
-                                            Icons.person,
-                                            color: kBlueColor,
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            course.createdBy,
-                                            style: const TextStyle(
-                                                fontSize: 16,
-                                                color: kBlueColor),
-                                          ),
-                                        ],
-                                      ),
-                                      FavoriteOption(course: course),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          const Icon(Icons.play_circle_outline),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            '${course.lessonNo} Lessons',
-                                            style: greyTextStyle,
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Icon(Icons.access_time),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            course.duration,
-                                            style: greyTextStyle,
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        width: 20,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.star,
-                                            size: 25,
-                                            color: Colors.yellow,
-                                          ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            '${course.rate}',
-                                            style: greyTextStyle,
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                  ReadMoreText(
-                                    course.description,
-                                    trimLines: 2,
-                                    trimMode: TrimMode.Line,
-                                    trimCollapsedText: "show More",
-                                    trimExpandedText: "show less",
-                                    moreStyle: const TextStyle(
-                                        color: kBlueColor,
-                                        fontWeight: FontWeight.bold),
-                                    lessStyle: const TextStyle(
-                                        color: kBlueColor,
-                                        fontWeight: FontWeight.bold),
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      color: Colors.grey.shade500,
-                                      fontWeight: FontWeight.bold,
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: screenHeight * 0.02),
+
+                    // Course Details Container
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(screenWidth * 0.08),
+                          topRight: Radius.circular(screenWidth * 0.08),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: horizontalPadding,
+                          right: horizontalPadding,
+                          top: verticalPadding * 2,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              course.title,
+                              style: TextStyle(
+                                fontSize: titleFontSize,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey.shade800,
+                              ),
+                            ),
+                            SizedBox(height: screenHeight * 0.015),
+
+                            // Creator and Favorite
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.person,
+                                      color: kBlueColor,
+                                      size: iconSize,
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "Course Content",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20),
+                                    SizedBox(width: screenWidth * 0.02),
+                                    Text(
+                                      course.createdBy,
+                                      style: TextStyle(
+                                        fontSize: regularFontSize,
+                                        color: kBlueColor,
                                       ),
-                                      Text(
-                                        "(${course.sections.length} sections)",
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.grey.shade700),
-                                      )
-                                    ],
+                                    ),
+                                  ],
+                                ),
+                                FavoriteOption(course: course),
+                              ],
+                            ),
+
+                            // Course Stats
+                            Wrap(
+                              spacing: screenWidth * 0.05,
+                              children: [
+                                _buildStatItem(
+                                  Icons.play_circle_outline,
+                                  '${course.lessonNo} Lessons',
+                                  greyTextStyle,
+                                  iconSize,
+                                ),
+                                _buildStatItem(
+                                  Icons.access_time,
+                                  course.duration,
+                                  greyTextStyle,
+                                  iconSize,
+                                ),
+                                _buildStatItem(
+                                  Icons.star,
+                                  '${course.rate}',
+                                  greyTextStyle,
+                                  iconSize,
+                                  iconColor: Colors.yellow,
+                                ),
+                              ],
+                            ),
+
+                            // Course Description
+                            ReadMoreText(
+                              course.description,
+                              trimLines: 2,
+                              trimMode: TrimMode.Line,
+                              trimCollapsedText: "show More",
+                              trimExpandedText: "show less",
+                              moreStyle: TextStyle(
+                                color: kBlueColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: smallFontSize,
+                              ),
+                              lessStyle: TextStyle(
+                                color: kBlueColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: smallFontSize,
+                              ),
+                              style: TextStyle(
+                                fontSize: regularFontSize,
+                                color: Colors.grey.shade500,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            SizedBox(height: screenHeight * 0.02),
+
+                            // Course Content Header
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Course Content",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: subtitleFontSize,
                                   ),
-                                  ListView.builder(
-                                      shrinkWrap: true,
-                                      itemCount: course.sections.length,
-                                      physics: NeverScrollableScrollPhysics(),
-                                      itemBuilder: (context, index) {
-                                        return buildCourseContent(index);
-                                      })
-                                ]),
-                          ))
-                    ]),
+                                ),
+                                Text(
+                                  "(${course.sections.length} sections)",
+                                  style: TextStyle(
+                                    fontSize: regularFontSize,
+                                    color: Colors.grey.shade700,
+                                  ),
+                                )
+                              ],
+                            ),
+
+                            // Course Sections
+                            ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: course.sections.length,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) => buildCourseContent(
+                                index,
+                                regularFontSize,
+                                smallFontSize,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
+
+            // Bottom Bar
             Container(
-              height: 60,
-              margin: const EdgeInsets.only(left: 5, right: 5, bottom: 5),
+              height: bottomBarHeight,
+              margin: EdgeInsets.symmetric(
+                horizontal: horizontalPadding * 0.25,
+                vertical: verticalPadding,
+              ),
               child: Card(
                 elevation: 10,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         '\$ ${course.price}',
                         style: TextStyle(
-                            fontSize: 30, color: Colors.grey.shade900),
+                          fontSize: titleFontSize,
+                          color: Colors.grey.shade900,
+                        ),
                       ),
                       Row(
                         children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              String message =
-                                  "Course is already added into cart";
-                              if (!ShoppingCartDataProvider
-                                  .shoppingCartCourseList
+                          _buildButton(
+                            'Add to cart',
+                                () {
+                              String message = "Course is already added into cart";
+                              if (!ShoppingCartDataProvider.shoppingCartCourseList
                                   .contains(course)) {
                                 message = "Course is added into cart";
                                 ShoppingCartDataProvider.addCourse(course);
                               }
-                              // lets us show message in snack bar, so lets create snack bar utility method first
-
                               Util.showMessageWithAction(
-                                  context, message, "View", () {
-                                    // this create shopping cart list
-                               Util.openShoppingCart(context);
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: kPrimaryColor),
-                            child: const Text(
-                              "add to cart",
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          ElevatedButton(
-
-                            // when Clicked on buy button it will navigate to checkout screen to buy single course
-                            onPressed: () {
-                              Navigator.pushNamed(context, RouteNames.CheckoutScreen,
-                              arguments: CheckoutArgument([course], course.price),
+                                context,
+                                message,
+                                "View",
+                                    () => Util.openShoppingCart(context),
                               );
                             },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: kPrimaryColor),
-                            child: const Text(
-                              "Buy",
-                              style: TextStyle(fontSize: 20),
-                            ),
+                            regularFontSize,
                           ),
-                          const SizedBox(
-                            width: 10,
-                          )
+                          SizedBox(width: screenWidth * 0.02),
+                          _buildButton(
+                            'Buy',
+                                () {
+                              Navigator.pushNamed(
+                                context,
+                                RouteNames.checkoutScreen,
+                                arguments:
+                                CheckoutArgument([course], course.price),
+                              );
+                            },
+                            regularFontSize,
+                          ),
                         ],
                       )
                     ],
@@ -336,30 +351,68 @@ class CourseDetails extends StatelessWidget {
     );
   }
 
-  // this method will help us to build course content
-  Widget buildCourseContent(int index) {
+  Widget _buildStatItem(
+      IconData icon,
+      String text,
+      TextStyle textStyle,
+      double iconSize, {
+        Color? iconColor,
+      }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          icon,
+          size: iconSize,
+          color: iconColor,
+        ),
+        SizedBox(width: 10),
+        Text(text, style: textStyle),
+      ],
+    );
+  }
+
+  Widget _buildButton(String text, VoidCallback onPressed, double fontSize) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
+      child: Text(
+        text,
+        style: TextStyle(fontSize: fontSize),
+      ),
+    );
+  }
+
+  Widget buildCourseContent(int index, double titleSize, double subtitleSize) {
     Section section = course.sections[index];
     return ExpansionTile(
       title: Text(
         "Section ${index + 1} - ${section.name}",
-        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        style: TextStyle(
+          fontSize: titleSize,
+          fontWeight: FontWeight.bold,
+        ),
       ),
       children: section.lectures.map((lecture) {
         return ListTile(
           leading: const SizedBox(),
-          title: Text(lecture.name),
+          title: Text(
+            lecture.name,
+            style: TextStyle(fontSize: subtitleSize),
+          ),
           subtitle: Row(
             children: [
               Icon(
                 Icons.access_time,
-                size: 15,
+                size: subtitleSize,
               ),
-              SizedBox(
-                width: 10,
-              ),
+              SizedBox(width: 10),
               Text(
                 lecture.duration,
-                style: TextStyle(color: Colors.grey.shade500, fontSize: 15),
+                style: TextStyle(
+                  color: Colors.grey.shade500,
+                  fontSize: subtitleSize,
+                ),
               )
             ],
           ),

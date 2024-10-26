@@ -1,13 +1,11 @@
 import 'package:csc_picker/csc_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/constants.dart';
-import 'package:online_course_app_ui/data_provider/shopping_cart_data_provider.dart';
-import 'package:online_course_app_ui/util/route_names.dart';
-import 'package:online_course_app_ui/util/util.dart';
-
+import '../constants.dart';
 import '../data_provider/my_course_data_provider.dart';
+import '../data_provider/shopping_cart_data_provider.dart';
 import '../model/course.dart';
+import '../util/route_names.dart';
+import '../util/util.dart';
 import 'paymentMethod/payment_method.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -129,7 +127,7 @@ class CheckoutScreen extends StatelessWidget {
                   ShoppingCartDataProvider.clearCart();
                   Util.showMessage(context, "Your order is placed successfully");
                   // navigate to home page
-                  Navigator.pushNamed(context, RouteNames.CourseHome);
+                  Navigator.pushNamed(context, RouteNames.courseHome);
                 },
                   style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
                     child: const Text(

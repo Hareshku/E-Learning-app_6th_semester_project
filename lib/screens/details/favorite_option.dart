@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/model/course.dart';
+
+import '../../model/course.dart';
 
 class FavoriteOption extends StatefulWidget {
   const FavoriteOption({Key? key, required this.course}) :super(key: key);

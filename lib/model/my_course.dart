@@ -1,4 +1,5 @@
-import 'package:online_course_app_ui/model/course.dart';
+
+import 'course.dart';
 
 class MyCourse {
   final Course _course;

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/arguments/course_argument.dart';
-import 'package:online_course_app_ui/util/route_names.dart';
-
 import '../../../constants.dart';
 import '../../../model/course.dart';
+import '../../arguments/course_argument.dart';
+import '../../util/route_names.dart';
 
 class CourseItem extends StatelessWidget {
   const CourseItem({Key? key, required this.course}) : super(key: key);
@@ -13,6 +12,8 @@ class CourseItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 200,
+      height: 180,
+      // height: 200,
       child: Padding(
         padding: const EdgeInsets.all(1),
         child: Card(
@@ -24,7 +25,7 @@ class CourseItem extends StatelessWidget {
           child: InkWell(
             // this will open the course details screen when clicked on any course.
             onTap: (){
-             Navigator.pushNamed(context, RouteNames.CourseDetails,
+             Navigator.pushNamed(context, RouteNames.courseDetails,
              arguments: CourseArgument(course),
              );
 
@@ -40,7 +41,7 @@ class CourseItem extends StatelessWidget {
                     children: [
                       Text(course.title,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey.shade800,
                       ),),
@@ -74,11 +75,14 @@ class CourseItem extends StatelessWidget {
                               Text('${course.rate}', style: const TextStyle(fontSize: 15),),
                             ],
                           ),
-                          Text('\$${course.price}',style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.grey.shade800,
-                            fontWeight: FontWeight.bold,
-                          ),),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: Text('\$${course.price}',style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.grey.shade800,
+                              fontWeight: FontWeight.bold,
+                            ),),
+                          ),
                         ],
                       ),
                     ],

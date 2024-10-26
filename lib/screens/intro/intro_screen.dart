@@ -63,7 +63,7 @@ class IntroScreen extends StatelessWidget {
                         ),
                         FittedBox(
                           child: Text(
-                            "Choose your favorite course & start learning Java",
+                            "Choose your favorite course & start learning",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: subtitleFontSize,
@@ -78,7 +78,7 @@ class IntroScreen extends StatelessWidget {
                           width: screenWidth * 0.7, // 70% of screen width
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, RouteNames.CourseHome);
+                              Navigator.pushNamed(context, RouteNames.signUpPage);
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: kPrimaryColor,

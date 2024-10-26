@@ -28,7 +28,7 @@ class _OffersState extends State<Offers> {
     // todo implement initState
     super.initState();
 
-    timer = Timer.periodic(const Duration(seconds: 3), (tiner) {
+    timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       if (_selectedPromo < 2) {
         _selectedPromo++;
       } else {

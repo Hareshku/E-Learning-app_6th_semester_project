@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/constants.dart';
-
+import '../constants.dart';
 import '../util/util.dart';
 
 class ShoppingCart extends StatelessWidget {

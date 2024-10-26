@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/constants.dart';
-import 'package:online_course_app_ui/data_provider/course_data_provider.dart';
-import 'package:online_course_app_ui/model/course.dart';
+
+import '../../constants.dart';
+import '../../data_provider/course_data_provider.dart';
+import '../../model/course.dart';
+
 
 class Wishlist extends StatefulWidget {
   const Wishlist({Key? key}) : super(key: key);

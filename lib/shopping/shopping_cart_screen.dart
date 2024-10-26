@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/arguments/checkout_argument.dart';
-import 'package:online_course_app_ui/constants.dart';
-import 'package:online_course_app_ui/data_provider/shopping_cart_data_provider.dart';
-import 'package:online_course_app_ui/util/route_names.dart';
-
+import '../arguments/checkout_argument.dart';
+import '../constants.dart';
+import '../data_provider/shopping_cart_data_provider.dart';
 import '../model/course.dart';
+import '../util/route_names.dart';
 
 class ShoppingCartScreen extends StatefulWidget {
   const ShoppingCartScreen({Key? key}) : super(key: key);
@@ -72,7 +70,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       const SizedBox(
-                        width: 280,
+                        width: 250,
                         height: 50,
                         child: TextField(
                           decoration: InputDecoration(
@@ -85,13 +83,14 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                         ),
                       ),
                       const SizedBox(
-                        width: 10,
+                        width: 5,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
+
                               backgroundColor: kPrimaryColor),
                           child: const Text('Apply'),
                         ),
@@ -127,7 +126,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
             child: ElevatedButton(
               onPressed: () {
                 // this will navigate user to checkout screen.
-                Navigator.pushNamed(context, RouteNames.CheckoutScreen,
+                Navigator.pushNamed(context, RouteNames.checkoutScreen,
                 arguments: CheckoutArgument(cartCourseList, totalAmount),
                 );
               },
