@@ -6,12 +6,13 @@ import 'course_item.dart';
 class FeaturedCourses extends StatelessWidget {
   const FeaturedCourses({Key? key}) : super(key: key);
 
-// featured courses related data is in data_provider
-// get data for featured courses form data_provider
   @override
   Widget build(BuildContext context) {
-    // access list of featured courses
+    // Get screen size for responsive design
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
+    // List of featured courses
     List<Course> featuredCourseList = [
       CourseDataProvider.courseList[9],
       CourseDataProvider.courseList[0],
@@ -20,43 +21,47 @@ class FeaturedCourses extends StatelessWidget {
       CourseDataProvider.courseList[7],
       CourseDataProvider.courseList[5],
     ];
+
     return Column(
       children: [
+        // Header for Featured Courses
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               "Featured Courses",
               style: TextStyle(
-                fontSize: 20,
+                // fontSize: screenWidth * 0.05,  // Responsive font size
                 fontWeight: FontWeight.bold,
                 color: Colors.grey.shade800,
               ),
             ),
             InkWell(
               onTap: () {},
-              child: const Text(
+              child: Text(
                 "See All",
-                style: TextStyle(color: Colors.blue, fontSize: 15),
+                style: TextStyle(
+                  color: Colors.blue,
+                  // fontSize: screenWidth * 0.04,  // Responsive font size
+                ),
               ),
             ),
           ],
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: screenHeight * 0.01,  // Dynamic spacing
         ),
 
-        // this will show the featured courses in horizental listView
+        // List of featured courses in a horizontal ListView
         SizedBox(
-          height: 200,
+          height: 200,  // Dynamic height based on screen size
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: featuredCourseList.length,
             itemBuilder: (context, index) {
               Course course = featuredCourseList[index];
-              // create a separate widget to show course details. we will be using same widget for other featured courses too.
+              // Widget to show course details
               return CourseItem(course: course);
-              // catgory list
             },
           ),
         ),

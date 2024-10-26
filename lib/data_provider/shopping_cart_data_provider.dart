@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/model/course.dart';
+
+
+import '../model/course.dart';
 
 class ShoppingCartDataProvider{
   static final List<Course> _shoppingCartCourseList=[];

@@ -1,5 +1,5 @@
-import 'package:online_course_app_ui/model/course.dart';
-import 'package:online_course_app_ui/model/my_course.dart';
+import '../model/course.dart';
+import '../model/my_course.dart';
 
 class MyCourseDataProvider{
   static final List<MyCourse> _myCourses=[];

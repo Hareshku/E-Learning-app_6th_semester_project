@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:online_course_app_ui/notifier/course_Category_Change_Notifier.dart';
 import 'package:provider/provider.dart';
 
+import '../../notifier/course_Category_Change_Notifier.dart';
 import 'category_list.dart';
 import 'course_list.dart';
 

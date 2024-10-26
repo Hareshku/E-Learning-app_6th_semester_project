@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/constants.dart';
-import 'package:online_course_app_ui/model/course_category.dart';
-import 'package:online_course_app_ui/notifier/course_Category_Change_Notifier.dart';
 import 'package:provider/provider.dart';
+
+import '../../constants.dart';
+import '../../model/course_category.dart';
+import '../../notifier/course_Category_Change_Notifier.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({Key? key}) : super(key: key);

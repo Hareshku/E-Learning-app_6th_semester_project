@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/model/course_category.dart';
+
+import '../model/course_category.dart';
 
 class CourseCategoryChangeNotifier extends ChangeNotifier {
   CourseCategory _category =CourseCategory.all;

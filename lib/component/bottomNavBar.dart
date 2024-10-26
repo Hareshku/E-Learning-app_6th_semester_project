@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:online_course_app_ui/constants.dart';
-import 'package:online_course_app_ui/util/route_names.dart';
+
+import '../constants.dart';
+import '../util/route_names.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({Key? key, required this.selectedIndex}) : super(key: key);
@@ -136,14 +137,17 @@ class BottomNavBar extends StatelessWidget {
   }
 
   void openScreen(BuildContext context, int selectedOptionNo) {
-    String routeName = RouteNames.CourseHome;
+    String routeName = RouteNames.courseHome;
     switch (selectedOptionNo) {
       case 2:
         routeName = RouteNames.myCourseList;
         break;
 
       case 3:
-        routeName = RouteNames.WishlistScreen;
+        routeName = RouteNames.wishlistScreen;
+        break;
+      case 4:
+        routeName = RouteNames.account;
         break;
     }
     Navigator.pushReplacementNamed(context, routeName);

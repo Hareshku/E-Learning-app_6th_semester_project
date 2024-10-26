@@ -1,4 +1,4 @@
-import 'package:online_course_app_ui/model/lecture.dart';
+import 'lecture.dart';
 
 class Section {
   final String _name;

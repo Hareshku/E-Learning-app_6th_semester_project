@@ -14,13 +14,18 @@ class CourseHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get screen size for responsiveness
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
+              // Responsive container for the header section
               Container(
-                height: 170,
+                height: screenHeight * 0.22, // Dynamic height based on screen
                 decoration: const BoxDecoration(
                   color: kPrimaryColor,
                   borderRadius: BorderRadius.only(
@@ -28,29 +33,34 @@ class CourseHome extends StatelessWidget {
                     bottomRight: Radius.circular(25),
                   ),
                 ),
-
-                child:const  Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: screenWidth * 0.05, // Dynamic horizontal padding
+                    vertical: screenHeight * 0.015, // Dynamic vertical padding
+                  ),
                   child: Column(
                     children: [
-                      SizedBox(height: 10,),
-                      Header(),
-                      SizedBox(height: 10,),
-                      SearchCourse(),
+                      SizedBox(height: screenHeight * 0.01), // Adjust height spacing
+                      const Header(),
+                      SizedBox(height: screenHeight * 0.01), // Adjust height spacing
+                      const SearchCourse(),
                     ],
                   ),
                 ),
               ),
 
-              // course offers
+              // Course offers and featured sections
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth * 0.025, // Dynamic horizontal padding
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Offers(),
-                    // featured courses
+                    SizedBox(height: screenHeight * 0.02), // Adjust vertical spacing
                     const FeaturedCourses(),
+                    SizedBox(height: screenHeight * 0.02), // Adjust vertical spacing
                     const CategoryCourseList(),
                   ],
                 ),
@@ -58,9 +68,8 @@ class CourseHome extends StatelessWidget {
             ],
           ),
         ),
-
       ),
-      floatingActionButton: ShoppingCart(),
+      floatingActionButton: const ShoppingCart(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavBar(
         selectedIndex: 1,
