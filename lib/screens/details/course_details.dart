@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:online_course_app/model/user_model.dart';
 import 'package:readmore/readmore.dart';
 
 import '../../arguments/checkout_argument.dart';
@@ -309,12 +312,16 @@ class CourseDetails extends StatelessWidget {
                         children: [
                           _buildButton(
                             'Add to cart',
-                                () {
+                                () async{
                               String message = "Course is already added into cart";
                               if (!ShoppingCartDataProvider.shoppingCartCourseList
                                   .contains(course)) {
-                                message = "Course is added into cart";
+                                final uid = FirebaseAuth.instance.currentUser?.uid;
+                                final CollectionReference courseRef = FirebaseFirestore.instance.collection('user').doc(uid).collection('cart');
+                                courseRef.add(
+                                    {'thumbnail':course.thumbnailUrl,'title':course.title,'createdBy':course.createdBy,'rate':course.rate,'price':course.price,'duration':course.duration,'lesson':course.lessonNo});
                                 ShoppingCartDataProvider.addCourse(course);
+                                message = "Course is added into cart";
                               }
                               Util.showMessageWithAction(
                                 context,

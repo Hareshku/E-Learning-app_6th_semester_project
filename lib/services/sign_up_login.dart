@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import '../screens/details/course_details.dart';
 
 class AuthService {
   final _auth = FirebaseAuth.instance;
@@ -26,4 +29,5 @@ class AuthService {
   Future<void> signOut() async {
     await _auth.signOut();
   }
+
 }

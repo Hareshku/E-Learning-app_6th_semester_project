@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:csc_picker/csc_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import '../data_provider/my_course_data_provider.dart';
@@ -120,6 +122,13 @@ class CheckoutScreen extends StatelessWidget {
                       color: Colors.grey.shade900),
                 ),
                 ElevatedButton(onPressed: (){
+
+                  final uid = FirebaseAuth.instance.currentUser?.uid;
+                  final CollectionReference courseRef = FirebaseFirestore.instance.collection('user').doc(uid).collection('myCourse');
+                  courseRef.add(
+                      {'thumbnail':courseList[0].thumbnailUrl,'title':courseList[0].title,'createdBy':courseList[0].createdBy,'rate':courseList[0].rate,'price':courseList[0].price,'duration':courseList[0].duration,'lesson':courseList[0].lessonNo});
+
+
                   // this will clear items from shopping cart list and
                   //add in users my course list to place the order
                   MyCourseDataProvider.addAllCourse(courseList);

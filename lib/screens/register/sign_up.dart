@@ -22,12 +22,16 @@ class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   final AuthService _authService = AuthService(); // Instance of AuthService
   final CollectionReference _todoRef =
-      FirebaseFirestore.instance.collection("user");
+      FirebaseFirestore.instance.collection("users");
 
   bool _obscurePassword = true;
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight =  MediaQuery.of(context).size.height;
+    double de_Height = deviceWidth < 380 ? 5 : 100;
+    double dev_Height = deviceWidth < 380 ? 40 : 100;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -45,7 +49,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 100),
+              SizedBox(height: de_Height ),
               const Center(
                   child: Text("Sign Up",
                       style: TextStyle(
@@ -152,7 +156,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   },
                 ),
               ),
-              const SizedBox(height: 80),
+              SizedBox(height: dev_Height),
               Container(
                 height: 50,
                 width: 340,
@@ -171,11 +175,6 @@ class _SignUpPageState extends State<SignUpPage> {
                         // Log the user object for debugging
 
                         if (user != null) {
-                          await _todoRef.add({
-                            "name": _nameController.text,
-                            'contact': _contactController.text,
-                            'email': _emailController.text,
-                          });
                           // Ensure that the navigation is correct and LoginPage is defined in your routes
                           Navigator.pushReplacement(
                             context,
