@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:online_course_app/services/sign_up_login.dart';
@@ -15,6 +16,13 @@ class _LoginPageState extends State<LoginPage> {
   final email=TextEditingController();
   final password=TextEditingController();
   AuthService service = AuthService();
+
+
+  Future<QuerySnapshot> retrieveUserData()async{
+    final userId=FirebaseAuth.instance.currentUser?.uid;
+    var existingCourse=await FirebaseFirestore.instance.collection('users').doc(userId).collection('data').where('email',isEqualTo: email).get();
+    return existingCourse;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

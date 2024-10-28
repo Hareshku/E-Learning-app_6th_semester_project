@@ -5,6 +5,10 @@ class Account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double boxWidth = deviceWidth < 380 ? 200 : 250;
+    double boxHeight =deviceWidth <380 ? 200 : 250;
+    double textFieldHeight= deviceWidth < 380 ?30: 50;
     return Scaffold(
       body:SafeArea(child: Padding(
         padding: const EdgeInsets.only(right: 50, left: 50),
@@ -13,8 +17,8 @@ class Account extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: Container(
-                width: 250,
-                height: 250,
+                width: boxWidth,
+                height: boxHeight,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
@@ -33,7 +37,7 @@ class Account extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 50,),
+             SizedBox(height: textFieldHeight,),
             const Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Row(
@@ -45,7 +49,7 @@ class Account extends StatelessWidget {
               ),
             ),
             const Divider(),
-            const SizedBox(height: 50,),
+             SizedBox(height: textFieldHeight,),
             const Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Row(
@@ -57,7 +61,7 @@ class Account extends StatelessWidget {
               ),
             ),
             const Divider(),
-            const SizedBox(height: 50,),
+             SizedBox(height: textFieldHeight,),
             const Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Row(
@@ -69,7 +73,7 @@ class Account extends StatelessWidget {
               ),
             ),
             const Divider(),
-            const SizedBox(height: 50,),
+             SizedBox(height: textFieldHeight,),
             const Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Row(
@@ -81,7 +85,7 @@ class Account extends StatelessWidget {
               ),
             ),
             const Divider(),
-            const SizedBox(height: 50,),
+             SizedBox(height: textFieldHeight,),
             const Padding(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Row(

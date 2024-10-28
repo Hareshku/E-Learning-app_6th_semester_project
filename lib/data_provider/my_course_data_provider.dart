@@ -14,6 +14,8 @@ class MyCourseDataProvider{
 
      }
   }
+  static void setCourse (List<MyCourse> myCourse){
 
+  }
   static List<MyCourse> get myCourses => _myCourses;
 }

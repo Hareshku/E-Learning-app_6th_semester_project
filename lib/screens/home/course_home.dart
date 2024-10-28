@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:online_course_app/data_provider/my_course_data_provider.dart';
+import 'package:online_course_app/model/course.dart';
 
 import '../../component/bottomNavBar.dart';
 import '../../component/shopping_cart.dart';
 import '../../constants.dart';
+import '../../model/my_course.dart';
 import '../widgets/category_course_list.dart';
 import '../widgets/featured_courses.dart';
 import '../widgets/header.dart';
@@ -11,6 +16,65 @@ import '../widgets/search_course.dart';
 
 class CourseHome extends StatelessWidget {
   const CourseHome({Key? key}) : super(key: key);
+
+  // Future<void> fetchData() async{
+    // fetch wishlist
+    Future<List<Map<String, dynamic>>> fetchWishlistItems() async {
+      final uid = FirebaseAuth.instance.currentUser?.uid;
+
+      if (uid == null) {
+        return [];  // Return an empty list if user is not logged in
+      }
+      final CollectionReference courseRef = FirebaseFirestore.instance
+          .collection('user')
+          .doc(uid)
+          .collection('wishList');
+
+      final QuerySnapshot snapshot = await courseRef.get();
+      final wishlistItems = snapshot.docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
+
+      return wishlistItems;
+    }
+
+    // fetch cart list
+    Future<List<Map<String, dynamic>>> fetchCartItems() async {
+
+
+      final uid = FirebaseAuth.instance.currentUser?.uid;
+
+      if (uid == null) {
+        return [];  // Return an empty list if user is not logged in
+      }
+
+      final CollectionReference cartRef = FirebaseFirestore.instance
+          .collection('user')
+          .doc(uid)
+          .collection('cart');
+
+      final QuerySnapshot snapshot = await cartRef.get();
+      final cartItems = snapshot.docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
+      return cartItems;
+    }
+
+
+    // fetch myCourse list
+  Future<List<Map<String, dynamic>>> fetchMyCourses() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+
+    if (uid == null) {
+      return [];  // Return an empty list if the user is not logged in
+    }
+
+    final CollectionReference myCourseRef = FirebaseFirestore.instance
+        .collection('user')
+        .doc(uid)
+        .collection('myCourse');
+
+    final QuerySnapshot snapshot = await myCourseRef.get();
+    final myCourses = snapshot.docs.map((doc) => doc.data() as Map<String, dynamic>).toList();
+
+    return myCourses;
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../arguments/checkout_argument.dart';
 import '../constants.dart';
 import '../data_provider/shopping_cart_data_provider.dart';
@@ -16,8 +17,11 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
   @override
   Widget build(BuildContext context) {
     double totalAmount = calculateTotal();
-    List<Course> cartCourseList =
-        ShoppingCartDataProvider.shoppingCartCourseList;
+    List<Course> cartCourseList = ShoppingCartDataProvider.shoppingCartCourseList;
+
+    // Get the width of the device
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double boxWidth = deviceWidth < 380 ? 255 : 290;
 
     return Scaffold(
       appBar: AppBar(
@@ -35,12 +39,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                   children: [
                     Text(
                       'Total : ',
-                      style:
-                          TextStyle(fontSize: 20, color: Colors.grey.shade700),
+                      style: TextStyle(fontSize: 20, color: Colors.grey.shade700),
                     ),
-                    SizedBox(
-                      width: 20,
-                    ),
+                    SizedBox(width: 20),
                     Text(
                       '\$$totalAmount',
                       style: TextStyle(
@@ -63,16 +64,14 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                       color: Colors.grey.shade900,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const SizedBox(
-                        width: 250,
+                      SizedBox(
+                        width: boxWidth, // Set the width dynamically based on device width
                         height: 50,
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             hintText: "Enter Promo Code",
@@ -82,17 +81,18 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-
-                              backgroundColor: kPrimaryColor),
-                          child: const Text('Apply'),
+                      const SizedBox(width: 5),
+                      SizedBox(
+                        height: 55,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: kPrimaryColor,
+                            ),
+                            child: const Text('Apply', ),
+                          ),
                         ),
                       ),
                     ],
@@ -101,13 +101,10 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     "${cartCourseList.length} Courses in List",
                     style: TextStyle(fontSize: 20, color: Colors.grey.shade900),
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                 ],
               ),
               Expanded(
-                // flex: 1,
                 child: ListView.builder(
                   itemCount: cartCourseList.length,
                   itemBuilder: (context, index) {
@@ -118,16 +115,16 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
             ],
           ),
           // Container to show check out button
-          // will route user to place order screen
           Container(
             height: 50,
             width: double.infinity,
-            margin: const EdgeInsets.only(bottom: 10,left: 20, right: 20),
+            margin: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
             child: ElevatedButton(
               onPressed: () {
-                // this will navigate user to checkout screen.
-                Navigator.pushNamed(context, RouteNames.checkoutScreen,
-                arguments: CheckoutArgument(cartCourseList, totalAmount),
+                Navigator.pushNamed(
+                  context,
+                  RouteNames.checkoutScreen,
+                  arguments: CheckoutArgument(cartCourseList, totalAmount),
                 );
               },
               style: ElevatedButton.styleFrom(
@@ -145,19 +142,19 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                 ),
               ),
             ),
-          )
+          ),
         ]),
       ),
     );
   }
 
-  // to get total amount of cart items
   double calculateTotal() {
-    return ShoppingCartDataProvider.shoppingCartCourseList
-        .fold(0, (old, course) => old + course.price);
+    return ShoppingCartDataProvider.shoppingCartCourseList.fold(
+      0,
+          (old, course) => old + course.price,
+    );
   }
 
-  // function to create shopping cart item this will be called from listView
   Widget createShoppingCartItem(int index) {
     Course course = ShoppingCartDataProvider.shoppingCartCourseList[index];
     return Card(
@@ -173,11 +170,9 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
           children: [
             Text(
               'By ${course.createdBy}',
-              style: TextStyle(color: Colors.blue, fontSize: 13),
+              style:const TextStyle(color: Colors.blue, fontSize: 13),
             ),
-            const SizedBox(
-              height: 5,
-            ),
+            const SizedBox(height: 5),
             Row(
               children: [
                 Text(
@@ -187,17 +182,13 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
                     color: Colors.grey.shade500,
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 CircleAvatar(
                   radius: 3,
                   backgroundColor: Colors.grey,
                   child: Container(),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const SizedBox(width: 10),
                 Text(
                   "${course.lessonNo} Lessons",
                   style: TextStyle(fontSize: 14, color: Colors.grey.shade500),
